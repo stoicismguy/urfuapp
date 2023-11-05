@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+}
+
+.main-header {
+    background-color: #ffffff;
+    height: 55px; 
+    /* background-color: #25B33f; */
+    border-bottom: 2px solid #d3d3d3;
+}
+
+.header-nav {
+    padding: 0 10px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.header-nav p {
+    font-family: 'Marck Script', cursive;
+    font-size: 35px;
+}
+
+.nav-list {
+    list-style:none;
+}
+
+.nav-list a {
+    text-decoration:none;
+    color: #000;
+}
+
+.widgets {
+    
+}
+
+.widget-inner {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.create-widget {
+    display: flex;
+    width: 350px;
+    height: 150px;
+    border: 2px solid #d3d3d3;
+    background-color: #ffffff;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-widget a {
+    text-decoration: none;
+}
+.create-widget a p {
+    font-size: 20px;
+    color: #000;
+}
