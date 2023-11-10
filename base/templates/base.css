@@ -103,15 +103,21 @@ main {
 
 .find-button {
     /* margin: -5px 0 0 0; */
-    background-color: #8854bf;
+    background-color: #027de7;
     color: #ffffff;
     height: 50px;
     text-transform: uppercase;
     padding: 10px;
     border-radius: 15px;
     border: none;
-    box-shadow: 0px -4px #6c4298 inset;
+    box-shadow: 0px -4px #0261b5 inset;
     font-size: 18px;
+}
+
+.find-button:hover {
+    background-color: #2196fc;
+    box-shadow: 0px -4px #027de7 inset;
+	transition: .1s;
 }
 
 .existing-list {
@@ -122,8 +128,8 @@ main {
     display: grid;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-    grid-template-columns: repeat(5, minmax(230px, 1fr));
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(260px, 1fr));
     grid-template-rows: repeat(2, auto);
     /* background-color: aqua; */   
     
@@ -132,7 +138,6 @@ main {
 .existing-item {
     display: flex;
     flex-direction: column;
-    width: 230px;
     height: 210px;
     padding: 15px;
     /* margin-right: 15px; */
