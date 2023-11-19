@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for quiz in user_quizes %}
+<li class="existing-item">
+    <img src="{% static 'test.jpg' %}" alt="#">
+    <p>{{quiz.number_of_questions}} Вопросов</p>
+    <h2>{{quiz.name}}</h2>
+</li>
+{% endfor %}
+{% endblock content %}
