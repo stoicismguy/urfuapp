@@ -12,9 +12,8 @@ class Quiz(models.Model):
     time = models.IntegerField(help_text="Время на выполнение (мин)")
     difficulty = models.CharField(max_length=30)
 
-
     def __str__(self):
         return f"{self.name}-{self.topic}"
 
     def get_questions(self):
-        return self.question.all()
+        return self.question_set.all()

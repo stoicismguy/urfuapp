@@ -37,22 +37,16 @@
 		<div class="existing-quizzes">
             <h1>Мои викторины</h1>
             <ul class="existing-list">
-                {% block content %}
+                {% block user_questions %}
 
-                {% endblock content %}
+                {% endblock user_questions %}
             </ul>
         </div>
         <div class="existing-quizzes">
             <h1>Существующие викторины</h1>
             <ul class="existing-list">
-                {% for _ in "range(5)" %}
-                    <li class="existing-item">
-                        <img src="{% static 'test.jpg' %}" alt="#">
-                        <p>19 Вопросов</p>
-                        <h2>Заголовок викторины</h2>
-                    </li>
-                {% endfor %}
-
+                {% block all_questions %}
+                {% endblock all_questions %}
             </ul>
         </div>
     </main>
