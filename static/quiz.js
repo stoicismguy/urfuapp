@@ -1,9 +1,9 @@
-console.log("Hello first script")
-const url = window.location.href + 'data'
-
+console.log("test12")
+const url = window.location.href
+const url_data = url + 'data'
 $.ajax({
     type: 'GET',
-    url: url,
+    url: url_data,
     success: function(response) {
         const data = response.data;
         console.log(response);
@@ -16,10 +16,79 @@ $.ajax({
         const qTitle = document.getElementById("question_title");
         const aList = document.getElementById("answers_list");
 
-        qTitle.textContent = response.data[0].title;
-        for (var i=0; i < response.data[0].answers.length; i++){
-            const ans_text = response.data[0].answers[i];
-            aList.innerHTML += `<li class="button-item"><button><span class="button-text">${ans_text}</span></button></li>`
+        var current_question = 0
+        upload_question(current_question);
+        const data_send = {};
+        data_send['length'] = response.data['length']
+
+        function upload_question(current_question) {
+            qTitle.textContent = response.data[current_question].title;
+            aList.innerHTML = "";
+            for (var i=0; i < response.data[current_question].answers.length; i++){
+                const ans_text = response.data[current_question].answers[i];
+                aList.innerHTML += `<li class="button-item"><button id="${i}"><span class="button-text">${ans_text}</span></button></li>`;
+            }
+
+            Array.from(aList.children).forEach(element => {
+            const ans_button = element.children[0];
+            ans_button.addEventListener("click", function (e) {
+//                console.log(ans_button.textContent);
+//                console.log(Number(ans_button.id));
+//                console.log(data[current_question].answers[Number(ans_button.id)])
+                data_send[data[current_question].title] = data[current_question].answers[Number(ans_button.id)];
+                current_question += 1;
+                if (current_question < data['length']) {
+                    upload_question(current_question);
+                }
+                else {
+                    console.log("enought questions")
+                    sendData();
+
+                }
+                });
+            });
         }
+        const scrf = document.getElementsByName('csrfmiddlewaretoken')
+
+        const sendData = () => {
+            data_send['csrfmiddlewaretoken'] = scrf[0].value;
+            const url_save = url + 'save/';
+
+            $.ajax({
+                type: 'POST',
+                url: url_save,
+                data: data_send,
+                success: function(response) {
+                    const frame = document.getElementsByClassName("wrapper")[0];
+                    frame.innerHTML = `<p class='question-text' id='question_title'>${response['user']}</p>`
+                    frame.innerHTML += `<p class='question-text' id='question_title'>Ваш результат:</p>`
+                    frame.innerHTML += `<p class='question-text' id='question_title'>${response['result']} / ${response['length']}</p>`
+                    frame.innerHTML += `<p class='question-text' id='question_title' style="font-size: 60px"><b>${response['percentage']}%</b></p>`
+                    frame.innerHTML += `<button class='back-button'><p>На главную</p></button>`
+                    frame.innerHTML += `<button class='again-button'><p>Пройти заново</p></button>`
+
+                    const back_button = document.getElementsByClassName("back-button")[0];
+                    const again_button = document.getElementsByClassName("again-button")[0];
+
+                    back_button.addEventListener("click", function (e) {
+                        const current_url = window.location.href.split("/");
+                        const arr = current_url.slice(0, 3).join("/");
+                        console.log(arr);
+                        window.location.replace(arr);
+                    });
+
+
+                    again_button.addEventListener("click", function (e) {
+                         location.reload();
+                    });
+                }
+            });
+        }
+
+
+//        const prevButton = document.getElementsByClassName("prev-button")[0];
+//        prevButton.addEventListener("click", function (e) {
+//            current_question -= 1;
+//        })
     }
 })

@@ -23,6 +23,7 @@
         </nav>
     </header>
     <main>
+        {% csrf_token %}
         <div class="wrapper-main">
             <h1 id="quiz_title"></h1>
             <h2 id="quiz_topic"></h2>
@@ -43,16 +44,16 @@
 <!--                            <button><span class="button-text">Ответ номер четыре</span></button>-->
 <!--                        </li>-->
                     </ul>
-                    <div class="control">
-                        <ul>
-                            <li>
-                                <button class="prev-button"><span>Предыдущий вопрос</span></button>
-                            </li>
-                            <li>
-                                <button class="next-button"><span>Следующий вопрос</span></button>
-                            </li>
-                        </ul>
-                    </div>
+<!--                    <div class="control">-->
+<!--                        <ul>-->
+<!--                            <li>-->
+<!--                                <button class="prev-button"><span>Предыдущий вопрос</span></button>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <button class="next-button"><span>Следующий вопрос</span></button>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>

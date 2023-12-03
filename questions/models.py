@@ -15,6 +15,9 @@ class Question(models.Model):
     def get_answers(self):
         return self.answer_set.all()
 
+    def get_correct_answer(self):
+        return self.answer_set.filter(correct=True)
+
 
 class Answer(models.Model):
     text = models.CharField(max_length=120)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView
 from quizes.models import Quiz
+from questions.models import Question, Answer
 from django.http import JsonResponse
 
 # Create your views here.
@@ -26,6 +27,7 @@ def quiz_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     return render(request, 'quiz_view.html', {'obj': quiz})
 
+
 def quiz_data_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     questions = []
@@ -41,5 +43,29 @@ def quiz_data_view(request, pk):
         'title': quiz.name,
         'topic': quiz.topic,
         'data': questions,
+        'length': len(questions),
         'time': quiz.time,
     })
+
+
+def save_quiz_view(request, pk):
+    data = dict(request.POST)
+    callback = dict()
+    callback['result'] = 0
+    callback['length'] = int(data['length'][0])
+    data.pop('length')
+    data.pop('csrfmiddlewaretoken')
+
+    for k in data.keys():
+        question = Question.objects.get(text=k)
+        answer = question.get_correct_answer()[0]
+        if data[k][0] == answer.text:
+            callback['result'] += 1
+    callback['percentage'] = int((callback['result'] / callback['length']) * 100)
+    callback['user'] = str(request.user)
+
+    return JsonResponse(callback)
+
+
+def create_quiz_view(request):
+    return render(request, 'create_quiz_view.html')

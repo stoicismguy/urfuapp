@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>РусВопрос</title>
+    <link rel="stylesheet" href="{% static 'quiz_view.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'quiz.js' %}"></script>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="header-nav">
+            <a href="#"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
+            <p><b style="color: blue"">Рус</b><b style="color: red"">Вопрос</b></p>
+            <ul class="nav-list">
+                <li><a href="#">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
