@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>РусВопрос</title>
-    <link rel="stylesheet" href="{% static 'quiz_view.css' %}">
+    <link rel="stylesheet" href="{% static 'create_quiz_view.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
@@ -22,5 +22,21 @@
             </ul>
         </nav>
     </header>
+<main>
+        {% csrf_token %}
+        <div class="wrapper-main">
+            <div class="wrapper">
+                <div>
+                    <p>Название викторины</p>
+                    <input type="text"/>
+                </div>
+                <div>
+                    <p>Тема викторины</p>
+                    <input type="text"/>
+                </div>
+
+            </div>
+        </div>
+    </main>
 </body>
 </html>
