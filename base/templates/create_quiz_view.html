@@ -26,14 +26,33 @@
         {% csrf_token %}
         <div class="wrapper-main">
             <div class="wrapper">
-                <div>
-                    <p>Название викторины</p>
-                    <input type="text"/>
-                </div>
-                <div>
-                    <p>Тема викторины</p>
-                    <input type="text"/>
-                </div>
+                <p>Название викторины</p>
+                <input type="text" class="input-name"/>
+                <p>Тема викторины</p>
+                <input type="text" class="input-topic"/>
+                <p>Вопросы</p>
+                <ul class="qustion-list">
+                    <li class="qustion-item">
+                        <p>Вопрос</p>
+                        <input type="text" class="input-box"/>
+                        <p>Ответы</p>
+                        <ul class="answer-list">
+                            <li class="answer-item">
+                                <input type="text"  class="input-box"/>
+                                <div class="title-input">
+                                    <p>Правильный ответ</p>
+                                    <input type="checkbox" />
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="add-answer">
+                            <p>Добавить ответ</p>
+                        </button>
+                    </li>
+                </ul>
+                <button class="add-qustion">
+                    <p>Добавить вопрос</p>
+                </button>
 
             </div>
         </div>

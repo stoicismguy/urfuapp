@@ -52,6 +52,7 @@ main {
 .wrapper-main {
     width: 80%;
     margin: 0 auto;
+    min-width: 800px;
 }
 
 .wrapper {
@@ -59,11 +60,69 @@ main {
     border-radius: 20px;
     margin: 0 auto;
     padding: 15px;
-    align-items: center;
+    align-items: start;
     display: flex;
     flex-direction: column;
+    width: 100%;
+
 }
 
-.question {
-    background-color: #ffffff;
+
+.title-input{
+    display: flex;
+    flex-direction: row;
+
+}
+.qustion-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.answer-list{
+    list-style: none;
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+}
+.qustion-item{
+    border: 1px solid #d3d3d3;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: start;
+    width: calc(100%-10px);
+}
+.answer-item{
+    border: 1px solid #d3d3d3;
+    border-radius: 20px;
+    list-style: none;
+    padding: 20px;
+    width: 95%;
+    margin: 0;
+}
+.input-name{
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+}
+.input-topic{
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+}
+.input-box{
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+}
+.add-answer{
+    border-radius: 12px;
+    background: var(--primary-500, #1F41F7);
+    color: #FFFFFF;
 }

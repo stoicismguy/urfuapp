@@ -32,9 +32,6 @@ $.ajax({
             Array.from(aList.children).forEach(element => {
             const ans_button = element.children[0];
             ans_button.addEventListener("click", function (e) {
-//                console.log(ans_button.textContent);
-//                console.log(Number(ans_button.id));
-//                console.log(data[current_question].answers[Number(ans_button.id)])
                 data_send[data[current_question].title] = data[current_question].answers[Number(ans_button.id)];
                 current_question += 1;
                 if (current_question < data['length']) {
@@ -84,11 +81,5 @@ $.ajax({
                 }
             });
         }
-
-
-//        const prevButton = document.getElementsByClassName("prev-button")[0];
-//        prevButton.addEventListener("click", function (e) {
-//            current_question -= 1;
-//        })
     }
 })
