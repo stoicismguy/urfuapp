@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{% static 'quiz.js' %}"></script>
+    <script type="text/javascript" src="{% static 'create_quiz.js' %}"></script>
 </head>
 <body>
     <header class="main-header">
@@ -23,38 +23,56 @@
         </nav>
     </header>
 <main>
-        {% csrf_token %}
-        <div class="wrapper-main">
-            <div class="wrapper">
-                <p>Название викторины</p>
-                <input type="text" class="input-name"/>
-                <p>Тема викторины</p>
-                <input type="text" class="input-topic"/>
-                <p>Вопросы</p>
-                <ul class="qustion-list">
-                    <li class="qustion-item">
-                        <p>Вопрос</p>
-                        <input type="text" class="input-box"/>
-                        <p>Ответы</p>
-                        <ul class="answer-list">
-                            <li class="answer-item">
-                                <input type="text"  class="input-box"/>
-                                <div class="title-input">
-                                    <p>Правильный ответ</p>
-                                    <input type="checkbox" />
-                                </div>
-                            </li>
-                        </ul>
-                        <button class="add-answer">
-                            <p>Добавить ответ</p>
-                        </button>
-                    </li>
-                </ul>
-                <button class="add-qustion">
-                    <p>Добавить вопрос</p>
-                </button>
 
-            </div>
+    {% csrf_token %}
+    <div class="wrapper">
+        <p>Название викторины</p>
+        <input type="text" class="input-name" />
+        <p>Тема викторины</p>
+        <input type="text" class="input-topic" />
+        <p>Вопросы</p>
+
+            <ul class="question-list">
+                <!-- Пример вопроса -->
+                <li>
+                    <div class="question-wrapper">
+                        <input type="text" class="question-text" placeholder="Введите текст вопроса">
+                        <ul class="answer-list">
+                            <li class="question-answer">
+                                <div class="title-input">
+                                    <img class="remove-answer-btn" src="{% static 'trash.svg' %}" alt="" width="20">
+                                    <input type="checkbox" class="check-box">
+                                </div>
+                                <input type="text" placeholder="Введите текст здесь">
+                            </li>
+                            <li class="question-answer">
+                                <div class="title-input">
+                                    <img class="remove-answer-btn" src="{% static 'trash.svg' %}" alt="" width="20">
+                                    <input type="checkbox" class="check-box">
+                                </div>
+                                <input type="text" placeholder="Введите текст здесь">
+                            </li>
+                            <li class="question-answer">
+                                <div class="title-input">
+                                    <img class="remove-answer-btn" src="{% static 'trash.svg' %}" alt="" width="20">
+                                    <input type="checkbox" class="check-box">
+                                </div>
+                                <input type="text" placeholder="Введите текст здесь">
+                            </li>
+                            <li class="question-answer">
+                                <div class="title-input">
+                                    <img class="remove-answer-btn" src="{% static 'trash.svg' %}" alt="" width="20">
+                                    <input type="checkbox" class="check-box">
+                                </div>
+                                <input type="text" placeholder="Введите текст здесь">
+                            </li>
+                            <img src="{% static 'add-icon.svg' %}" alt="" class="add-answer-btn" width="30" height="30">
+                        </ul>
+                        <button class="remove-question-btn">Удалить вопрос</button>
+                    </div>
+                </li>
+            </ul>
+            <button class="add-question-btn">Добавить вопрос</button>
         </div>
     </main>
 </body>
