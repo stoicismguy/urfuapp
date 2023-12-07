@@ -203,6 +203,10 @@ main {
     height: 60px;
 }
 
+.back-button:hover {
+    background-color: #1F41F7;
+}
+
 .back-button p {
     color: #ffffff;
     text-transform: uppercase;

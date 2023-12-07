@@ -3,6 +3,7 @@ from django.views.generic import View, TemplateView, ListView
 from quizes.models import Quiz
 from questions.models import Question, Answer
 from django.http import JsonResponse
+import json
 
 # Create your views here.
 
@@ -69,3 +70,36 @@ def save_quiz_view(request, pk):
 
 def create_quiz_view(request):
     return render(request, 'create_quiz_view.html')
+
+
+def save_create_view(request):
+    data = dict(request.POST)
+    all_questions = json.loads(data['questions'][0])
+    # dict_keys(['csrfmiddlewaretoken', 'title', 'topic', 'difficulty', 'time', 'questions'])
+
+    username = request.user
+    print(len(all_questions))
+    print(request.user)
+    db_quiz = Quiz.objects.create(
+        author=username,
+        name=data['title'][0],
+        topic=data['topic'][0],
+        number_of_questions=len(all_questions),
+        time=int(data['time'][0]),
+        difficulty=data['difficulty'][0])
+    quiz_id = db_quiz.id
+
+    for q in all_questions:
+        all_answers = q['answers']
+        db_question = Question.objects.create(
+            text=q['name'],
+            quiz=db_quiz
+        )
+        for ans in all_answers:
+            db_answer = Answer.objects.create(
+                text=ans['text'],
+                correct=bool(ans['is_correct']),
+                question=db_question
+            )
+
+    return JsonResponse({'is': 'yes'})

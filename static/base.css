@@ -117,8 +117,8 @@ main {
 }
 
 .find-button:hover {
-    background-color: #2196fc;
-    box-shadow: 0px -4px #027de7 inset;
+    background-color: #1631D4;
+    box-shadow: 0px -4px #09188F inset;
 	transition: .1s;
 }
 
@@ -167,8 +167,30 @@ main {
     text-overflow: ellipsis;
 }
 
-.existing-item img {
+.item-pic {
     width: 100%;
     max-height: 140px;
     object-fit: cover;
+}
+
+.list-config {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icons-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.img-button {
+    width: 30px;
+}
+
+.img-button:hover {
+    filter: invert(23%) sepia(73%) saturate(5796%) hue-rotate(233deg) brightness(94%) contrast(106%);
 }

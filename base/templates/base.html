@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'base.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script type="text/javascript" src="{% static 'base.js' %}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <title>РусВопрос</title>  
 </head>
@@ -31,7 +33,7 @@
                 </div>
                 <div class="widget-item">
                     <img src="{% static 'plus-icon.svg' %}" width="50" alt="find">
-                    <a href="#"><p>Создать викторину</p></a>  
+                    <a href="/create"><p>Создать викторину</p></a>
                 </div>
         </div>
 		<div class="existing-quizzes">
