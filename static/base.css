@@ -236,6 +236,37 @@ main {
     text-overflow: ellipsis;
 }
 
+.myDialog {
+    border-radius: 20px;
+    border: 2px solid #0F23B1;
+}
+
+.dialog-buttons {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 5fr 1fr;
+}
+
+.dialog-buttons button {
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.cancel {
+    border: 2px solid #1F41F7;
+    background-color: #ffffff;
+}
+
+.cancel:hover {
+    background-color: #fefefe;
+}
+
+.confirm {
+    background-color: #1F41F7;
+    color: white;
+    border: none;
+}
+
 .item-pic {
     width: 100%;
     max-height: 140px;

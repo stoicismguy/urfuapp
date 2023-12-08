@@ -14,6 +14,7 @@
     <title>РусВопрос</title>  
 </head>
 <body>
+
     <header class="main-header">
         <nav class="header-nav">
             <a href="#"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
@@ -52,6 +53,16 @@
             </ul>
         </div>
     </main>
+    {% csrf_token %}
+    <dialog id="myDialog" class="myDialog">
+        {% csrf_token %}
+        <h1 style="font-size: 25px;">Вы хотите удалить викторину:</h1>
+        <h2 class="dialog-title">Тема викторинки</h2>
+        <div class="dialog-buttons">
+            <button class="cancel" type="button" onclick="window.myDialog.close()"><p>Отменить</p></button>
+            <button class="confirm" type="button"><p>Да</p></button>
+        </div>
+    </dialog>
     <footer class="main-footer">
 
     </footer>
