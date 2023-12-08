@@ -4,15 +4,20 @@
 {% for quiz in user_quizes %}
 <li class="existing-item" id="{{quiz.pk}}">
     <img src="{% static 'test.jpg' %}" alt="#" class="item-pic">
-    <p>{{quiz.number_of_questions}} Вопросов</p>
+    <p class="question-count">{{quiz.number_of_questions}} Вопросов</p>
     <div class="list-config">
         <h2>{{quiz.name}}</h2>
-        <div class="icons-div">
-            <img src="{% static 'eye.svg' %}" class="img-button stat" onclick="event.stopPropagation()" alt="Статистика">
-            <img src="{% static 'dots.svg' %}" class="img-button extra" onclick="event.stopPropagation()" alt="Возможности">
+<!--        <img src="{% static 'dots.svg' %}" class="img-button extra" onclick="event.stopPropagation()" alt="Возможности">-->
+        <div class="dropdown">
+            <img src="{% static 'dots.svg' %}" class="dropbtn" alt="Возможности" width="20" onclick="event.stopPropagation()">
+            <div class="dropdown-content">
+                <a onclick="event.stopPropagation()"><div class="drop-link"><img src="{% static 'statistic.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Статистика</p></div></a>
+<!--                <a href="#" onclick="event.stopPropagation()"><div class="drop-link"><img src="{% static 'share.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Поделиться</p></div></a>-->
+                <a id="del-button" onclick="event.stopPropagation()"><div class="drop-link"><img src="{% static 'trash.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Удалить</p></div></a>
+            </div>
         </div>
-    </div>
 
+    </div>
 </li>
 {% endfor %}
 {% endblock user_questions %}
@@ -21,7 +26,7 @@
 {% for quiz in all_quizes %}
 <li class="existing-item" id="{{quiz.pk}}">
     <img src="{% static 'test.jpg' %}" alt="#" class="item-pic">
-    <p>{{quiz.number_of_questions}} Вопросов</p>
+    <p class="question-count">{{quiz.number_of_questions}} Вопросов</p>
     <h2>{{quiz.name}}</h2>
 </li>
 {% endfor %}

@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'quiz_preview.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<!--    <script type="text/javascript" src="{% static 'base.js' %}"></script>-->
+    <script type="text/javascript" src="{% static 'quiz_preview.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <title>РусВопрос</title>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="header-nav">
+            <a href="#"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
+            <p><b style="color: blue"">Рус</b><b style="color: red"">Вопрос</b></p>
+            <ul class="nav-list">
+                <li><a href="#">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% csrf_token %}
+    <div class="wrapper-main">
+        <div class="wrapper">
+            <h1 class="name text-header">Название</h1>
+            <h2 class="title text-header">Тема</h2>
+            <h3 class="difficulty text-header">Сложность</h3>
+            <h3 class="question-count text-header">Количество вопросов</h3>
+            <div id="qrcode" class="qrcode"></div>
+            <button class='back-button'><p>пройти викторину</p></button>
+            <button class='again-button'><p>на главную</p></button>
+        </div>
+
+    </div>
+
+</body>
+</html>

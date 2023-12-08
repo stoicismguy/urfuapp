@@ -21,6 +21,75 @@ body {
     /* background-color: #25B33f; */
     border-bottom: 2px solid #d3d3d3;
 }
+/* jnc,sdfsdfsgjdg;fghjdjhfg:kdfhgk:djfgk:dfhjg:dfjgdkpfghdfg */
+.dropbtn {
+	width: 25px;
+	color: white;
+	border: none;
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fefefe;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: max-content;
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+}
+
+/* Ссылки внутри выпадающего списка */
+.dropdown-content a {
+  color: black;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:first-child  {
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown-content a:last-child  {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Изменение цвета выпадающих ссылок при наведении курсора */
+.dropdown-content a:hover {background-color: #D2DCFE;}
+
+/* Показать выпадающее меню при наведении курсора */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+.dropdown:hover .dropbtn {
+    filter: invert(16%) sepia(63%) saturate(7370%) hue-rotate(236deg) brightness(99%) contrast(95%);
+}
+
+.drop-link {
+    display: flex;
+    flex-display: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.drop-link-img {
+    width: 20px
+    padding: 0;
+}
+
+.drop-link-text {
+    width: 20px
+    padding: 0;
+    margin: 0;
+}
 
 .header-nav {
     padding: 0 10px;
@@ -143,12 +212,12 @@ main {
     height: 210px;
     padding: 15px;
     /* margin-right: 15px; */
-    /* background-color: antiquewhite; */
+    background-color: #fefefe;
     border-radius: 20px;
     border: 1px solid #d3d3d3;
 }
 
-.existing-item p {
+.question-count {
     margin: 5px 0;
     padding: 0;
     background-color: #ffffff;

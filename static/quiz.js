@@ -1,6 +1,6 @@
 console.log("test12")
 const url = window.location.href
-const url_data = url + 'data'
+const url_data = url.replace('solve', 'data', 1)
 $.ajax({
     type: 'GET',
     url: url_data,
@@ -49,7 +49,7 @@ $.ajax({
 
         const sendData = () => {
             data_send['csrfmiddlewaretoken'] = scrf[0].value;
-            const url_save = url + 'save/';
+            const url_save = url.replace('solve', 'save/', 1);
 
             $.ajax({
                 type: 'POST',

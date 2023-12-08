@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView
 from quizes.models import Quiz
 from questions.models import Question, Answer
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 
 # Create your views here.
@@ -29,6 +29,11 @@ def quiz_view(request, pk):
     return render(request, 'quiz_view.html', {'obj': quiz})
 
 
+def quiz_preview(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    return render(request, 'quiz_preview.html')
+
+
 def quiz_data_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     questions = []
@@ -44,9 +49,18 @@ def quiz_data_view(request, pk):
         'title': quiz.name,
         'topic': quiz.topic,
         'data': questions,
+        'difficulty': quiz.difficulty,
+        'pk': pk,
         'length': len(questions),
         'time': quiz.time,
     })
+
+
+def delete_quiz(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    quiz.delete()
+    return HttpResponse()
+
 
 
 def save_quiz_view(request, pk):
