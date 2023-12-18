@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{% static 'result.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <title>Результаты</title>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="header-nav">
+            <a href="#"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
+            <p><b style="color: blue"">Рус</b><b style="color: red"">Вопрос</b></p>
+            <ul class="nav-list">
+                <li><a href="#">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Результаты викторины</h1>
+        <h2>Название викторины: "Ваше Название"</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Имя пользователя</th>
+                    <th>Дата 1</th>
+                    <th>Время прохождения</th>
+                    <th>Результат</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Пользователь 1</td>
+                    <td>01.01.2023</td>
+                    <td>12 мин 20 сек</td>
+                    <td>Результат 1</td>
+                </tr>
+                <tr>
+                    <td>Пользователь 2</td>
+                    <td>02.01.2023</td>
+                    <td>19 мин 42 сек</td>
+                    <td>Результат 2</td>
+                </tr>
+                <!-- Добавьте дополнительные строки по необходимости -->
+            </tbody>
+        </table>
+
+    </main>
+    
+</body>
+</html>

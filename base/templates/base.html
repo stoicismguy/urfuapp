@@ -10,11 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script type="text/javascript" src="{% static 'base.js' %}"></script>
+    <script type="text/javascript" src="{% static 'find_quiz.js' %}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <title>РусВопрос</title>  
 </head>
 <body>
-
     <header class="main-header">
         <nav class="header-nav">
             <a href="#"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
@@ -26,16 +26,16 @@
     </header>
     <main>
         <div class="widgets">
-                <div class="widget-item">
-                    <div class="widget-inner">
+            <div class="widget-item">
+                <div class="widget-inner">
                         <input type="text" class="input-frame" placeholder="Введите код или название">
                         <button class="find-button" href="#">Найти</button>
-                    </div>
                 </div>
-                <div class="widget-item">
-                    <img src="{% static 'plus-icon.svg' %}" width="50" alt="find">
-                    <a href="/create"><p>Создать викторину</p></a>
-                </div>
+            </div>
+            <div class="widget-item">
+                <img src="{% static 'plus-icon.svg' %}" width="50" alt="find">
+                <a href="/create"><p>Создать викторину</p></a>
+            </div>
         </div>
 		<div class="existing-quizzes">
             <h1>Мои викторины</h1>

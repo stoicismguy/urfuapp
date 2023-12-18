@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView
 from quizes.models import Quiz
 from questions.models import Question, Answer
+from results.models import Result
 from django.http import JsonResponse, HttpResponse
 import json
 
@@ -62,6 +63,25 @@ def delete_quiz(request, pk):
     return HttpResponse()
 
 
+def statistic_quiz(request, pk):
+    return render(request, 'quiz_results.html')
+    # return JsonResponse({'results': all_results_data})
+
+
+def get_quiz_statistic(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    all_results = quiz.get_results()
+    all_results_data = []
+    for res in all_results:
+        result_data = dict()
+        result_data['name'] = str(res.user)
+        time = str(res.created).split(" ")
+        result_data['time_day'] = time[0]
+        result_data['time_time'] = time[1].split(".")[0]
+        result_data['score'] = res.score
+        all_results_data.append(result_data)
+
+    return JsonResponse({'data': all_results_data, "nums": quiz.number_of_questions})
 
 def save_quiz_view(request, pk):
     data = dict(request.POST)
@@ -78,6 +98,10 @@ def save_quiz_view(request, pk):
             callback['result'] += 1
     callback['percentage'] = int((callback['result'] / callback['length']) * 100)
     callback['user'] = str(request.user)
+    quiz = Quiz.objects.get(pk=pk)
+    result = Result.objects.create(quiz=quiz,
+                                   user=request.user,
+                                   score=int(callback['result']))
 
     return JsonResponse(callback)
 
