@@ -1,13 +1,12 @@
-console.log("new")
+console.log("new3")
 
 document.addEventListener('DOMContentLoaded', function () {
     question_list = document.getElementsByClassName("question-list")[0];
 
-
-
     add_q_btn = document.getElementsByClassName("add-question-btn")[0];
-    add_q_btn.addEventListener("click", function (e) {
-        question_list.innerHTML += `<li>
+    add_q_btn.onclick = function (e) {
+        li_to_add = document.createElement('li');
+        li_to_add.innerHTML += `<li>
                     <div class="question-wrapper">
                         <div class="question-header">
                             <img src="static/trash.svg" alt="Удалить" width="30" class="delete_question">
@@ -46,11 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         </ul>
                     </div>
                 </li>`
-
+        question_list.appendChild(li_to_add);
         add_ans_btn = question_list.lastChild.getElementsByClassName("add-answer-btn")[0];
         console.log(add_ans_btn);
 
-        add_ans_btn.addEventListener("click", function (e) {
+        add_ans_btn.onclick = function (e) {
             ans_list =  e.target.parentElement.parentElement.getElementsByClassName("answer-list")[0];
             new_li = document.createElement("li");
             new_li.classList += "question-answer";
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <img class="remove-answer-btn" src="static/trash.svg" alt="" width="20">
                                     <input type="checkbox" class="check-box">
                                 </div>
-                                <input type="text" placeholder="Введите текст здесь">`;
+                                <input type="text" placeholder="Введите текст здесь" class="answer-text">`;
 
             ans_list.insertBefore(new_li, ans_list.children[ans_list.childElementCount - 1]);
             current = ans_list.children[ans_list.childElementCount - 2];
@@ -70,15 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
             console.log(current_del_btn);
-
-//            del_btn = new_li.getElementsByClassName("remove-answer-btn")[0];
-//            del_btn.addEventListener("click", function (e) {
-//                console.log("======")
-//                console.log(del_btn);
-//            });
-
-
-        });
+        };
 
         delete_buttons = question_list.lastChild.getElementsByClassName("remove-answer-btn");
         Array.from(delete_buttons).forEach(element => {
@@ -87,7 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
             });
         })
-    });
+    };
+
+    add_q_btn.click();
 
     send_button = document.getElementsByClassName("create-quiz")[0];
     send_button.addEventListener("click", function (e) {
@@ -130,7 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
             url: url_save,
             data: data_send,
             success: function (response) {
-
+                console.log("good response");
+                window.location.replace(window.location.href.replace("/create", "", 1));
             }
 
         });

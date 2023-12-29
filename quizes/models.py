@@ -17,3 +17,6 @@ class Quiz(models.Model):
 
     def get_questions(self):
         return self.question_set.all()
+
+    def get_results(self):
+        return self.result_set.all()

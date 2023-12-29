@@ -31,6 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    $('.stat-button').on('click', function() {
+        pk = this.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('id');
+        url = window.location.href;
+        pk = this.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('id');
+        url_go = url + pk + "/statistic";
+        document.location.href = url_go;
+    });
+
     const delete_data = (pk) => {
         data_send = {}
         const scrf = document.getElementsByName('csrfmiddlewaretoken');

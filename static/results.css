@@ -7,6 +7,35 @@ body {
 	width: 100%;
 }
 
+.main-header {
+    background-color: #ffffff;
+    height: 55px;
+    /* background-color: #25B33f; */
+    border-bottom: 2px solid #d3d3d3;
+}
+
+.header-nav {
+    padding: 0 10px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav p {
+    font-family: 'Marck Script', cursive;
+    font-size: 35px;
+}
+
+.nav-list {
+    list-style: none;
+}
+
+.nav-list a {
+    text-decoration:none;
+    color: #000;
+}
+
 table {
 	width: 80%;
 	margin: 20px auto;

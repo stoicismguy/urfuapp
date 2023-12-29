@@ -200,7 +200,7 @@ main {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    grid-template-columns: repeat(4, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     grid-template-rows: repeat(2, auto);
     /* background-color: aqua; */   
     

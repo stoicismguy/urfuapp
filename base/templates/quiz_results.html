@@ -1,12 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href= "{% static 'result.css' %}">
+    <link rel="stylesheet" href= "{% static 'results.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'result.js' %}"></script>
     <title>Результаты</title>
 </head>
 <body>
@@ -26,24 +30,12 @@
             <thead>
                 <tr>
                     <th>Имя пользователя</th>
-                    <th>Дата 1</th>
-                    <th>Время прохождения</th>
-                    <th>Результат</th>
+                    <th>Дата</th>
+                    <th>Время</th>
+                    <th class="result_text">Результат</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Пользователь 1</td>
-                    <td>01.01.2023</td>
-                    <td>12 мин 20 сек</td>
-                    <td>Результат 1</td>
-                </tr>
-                <tr>
-                    <td>Пользователь 2</td>
-                    <td>02.01.2023</td>
-                    <td>19 мин 42 сек</td>
-                    <td>Результат 2</td>
-                </tr>
+            <tbody class="tbody">
                 <!-- Добавьте дополнительные строки по необходимости -->
             </tbody>
         </table>
