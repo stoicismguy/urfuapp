@@ -1,0 +1,14 @@
+
+{% load static %}
+
+{% block main_header %}
+<header class="main-header">
+      <nav class="header-nav">
+          <a href="{% url 'main' %}" class="main-logo"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
+          <p><a href="{% url 'main' %}"><b style="color: blue">Рус</b><b style="color: red">Вопрос</b></a></p>
+          <ul class="nav-list">
+              <li><a>Профиль</a></li>
+          </ul>
+      </nav>
+</header>
+{% endblock main_header %}

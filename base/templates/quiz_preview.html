@@ -1,3 +1,5 @@
+{% include 'main_header.html' %}
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -16,25 +18,28 @@
     <title>РусВопрос</title>
 </head>
 <body>
-    <header class="main-header">
-        <nav class="header-nav">
-            <a href="#"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
-            <p><b style="color: blue"">Рус</b><b style="color: red"">Вопрос</b></p>
-            <ul class="nav-list">
-                <li><a href="#">Профиль</a></li>
-            </ul>
-        </nav>
-    </header>
+    {% block main_header %}
+    {% endblock main_header %}
+<!--    <header class="main-header">-->
+<!--        <nav class="header-nav">-->
+<!--            <a href="#" class="main-logo"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>-->
+<!--            <p><b style="color: blue"">Рус</b><b style="color: red"">Вопрос</b></p>-->
+<!--            <ul class="nav-list">-->
+<!--                <li><a href="#">Профиль</a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--    </header>-->
     {% csrf_token %}
     <div class="wrapper-main">
         <div class="wrapper">
-            <h1 class="name text-header">Название</h1>
-            <h2 class="title text-header">Тема</h2>
-            <h3 class="difficulty text-header">Сложность</h3>
-            <h3 class="question-count text-header">Количество вопросов</h3>
+            <h1 class="name text-header">Название: {{quiz.name}}</h1>
+            <h2 class="title text-header">Тема: {{quiz.topic}}</h2>
+            <h3 class="difficulty text-header">Сложность: {{quiz.difficulty}}</h3>
+            <h3 class="question-count text-header">Количество вопросов: {{quiz.number_of_questions}}</h3>
             <div id="qrcode" class="qrcode"></div>
-            <button class='back-button'><p>пройти викторину</p></button>
-            <button class='again-button'><p>на главную</p></button>
+            <a href="{% url 'solve' quiz.pk %}"><button class='back-button' href="{% url 'solve' quiz.pk %}"><p>пройти викторину</p></button></a>
+            <a href="{% url 'main' %}"><button class='again-button' href="{% url 'main' %}"><p>на главную</p></button></a>
+
         </div>
 
     </div>

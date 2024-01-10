@@ -30,9 +30,21 @@ def quiz_view(request, pk):
     return render(request, 'quiz_view.html', {'obj': quiz})
 
 
+def search_view(request):
+    search_query = request.GET.get("q")
+    # print(search_query)
+    results = Quiz.objects.filter(name__icontains=search_query)
+    context_send = dict()
+    context_send['finded'] = results
+    context_send['search_text'] = search_query
+    return render(request, 'search_result.html', context=context_send)
+
+
 def quiz_preview(request, pk):
     quiz = Quiz.objects.get(pk=pk)
-    return render(request, 'quiz_preview.html')
+    context = dict()
+    context['quiz'] = quiz
+    return render(request, 'quiz_preview.html', context=context)
 
 
 def quiz_data_view(request, pk):
@@ -80,8 +92,8 @@ def get_quiz_statistic(request, pk):
         result_data['time_time'] = time[1].split(".")[0]
         result_data['score'] = res.score
         all_results_data.append(result_data)
+    return JsonResponse({'data': all_results_data, "nums": quiz.number_of_questions, "name": quiz.name})
 
-    return JsonResponse({'data': all_results_data, "nums": quiz.number_of_questions})
 
 def save_quiz_view(request, pk):
     data = dict(request.POST)

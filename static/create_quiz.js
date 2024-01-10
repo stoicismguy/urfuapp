@@ -3,10 +3,15 @@ console.log("new3")
 document.addEventListener('DOMContentLoaded', function () {
     question_list = document.getElementsByClassName("question-list")[0];
 
+    document.querySelector(".main-logo").onclick = function () {
+            cur_loc = window.location.href.split("/");
+            window.location.replace(cur_loc.slice(0, 3).join("/"));
+        }
+
     add_q_btn = document.getElementsByClassName("add-question-btn")[0];
     add_q_btn.onclick = function (e) {
         li_to_add = document.createElement('li');
-        li_to_add.innerHTML += `<li>
+        li_to_add.innerHTML += `
                     <div class="question-wrapper">
                         <div class="question-header">
                             <img src="static/trash.svg" alt="Удалить" width="30" class="delete_question">
@@ -44,40 +49,53 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="static/add-icon.svg" alt="" class="add-answer-btn" width="30" height="30">
                         </ul>
                     </div>
-                </li>`
+                `
         question_list.appendChild(li_to_add);
         add_ans_btn = question_list.lastChild.getElementsByClassName("add-answer-btn")[0];
         console.log(add_ans_btn);
 
         add_ans_btn.onclick = function (e) {
             ans_list =  e.target.parentElement.parentElement.getElementsByClassName("answer-list")[0];
-            new_li = document.createElement("li");
-            new_li.classList += "question-answer";
-            new_li.innerHTML += `<div class="title-input">
-                                    <img class="remove-answer-btn" src="static/trash.svg" alt="" width="20">
-                                    <input type="checkbox" class="check-box">
-                                </div>
-                                <input type="text" placeholder="Введите текст здесь" class="answer-text">`;
+            if (ans_list.childElementCount < 6){
+                new_li = document.createElement("li");
+                new_li.classList += "question-answer";
+                new_li.innerHTML += `<div class="title-input">
+                                        <img class="remove-answer-btn" src="static/trash.svg" alt="" width="20">
+                                        <input type="checkbox" class="check-box">
+                                    </div>
+                                    <input type="text" placeholder="Введите текст здесь" class="answer-text">`;
 
-            ans_list.insertBefore(new_li, ans_list.children[ans_list.childElementCount - 1]);
-            current = ans_list.children[ans_list.childElementCount - 2];
-            current_del_btn = current.getElementsByClassName("remove-answer-btn");
-            Array.from(current_del_btn).forEach(element => {
-                element.addEventListener("click", function (e) {
-                    console.log("remove1");
-                    element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
+                ans_list.insertBefore(new_li, ans_list.children[ans_list.childElementCount - 1]);
+                current = ans_list.children[ans_list.childElementCount - 2];
+                current_del_btn = current.getElementsByClassName("remove-answer-btn");
+                Array.from(current_del_btn).forEach(element => {
+                    element.addEventListener("click", function (e) {
+                        if (element.parentElement.parentElement.parentElement.childElementCount > 3){
+                            element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
+                        }
+                    });
                 });
-            });
-            console.log(current_del_btn);
+            }
         };
 
         delete_buttons = question_list.lastChild.getElementsByClassName("remove-answer-btn");
         Array.from(delete_buttons).forEach(element => {
             element.addEventListener("click", function (e) {
-                console.log("remove2");
-                element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
+                console.log("here");
+                if (element.parentElement.parentElement.parentElement.childElementCount > 3){
+                    element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
+                }
             });
         })
+
+        delete_question = question_list.lastChild.getElementsByClassName("delete_question")[0];
+        delete_question.onclick = function (e) {
+            console.log(e.target.parentElement.parentElement.parentElement.parentElement.parentElement.childElementCount);
+            console.log(e.target.parentElement.parentElement.parentElement.parentElement);
+            if (e.target.parentElement.parentElement.parentElement.parentElement.childElementCount > 1){
+                e.target.parentElement.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement.parentElement);
+            }
+        };
     };
 
     add_q_btn.click();
@@ -126,11 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("good response");
                 window.location.replace(window.location.href.replace("/create", "", 1));
             }
-
         });
-
     }
-
-
 });
 

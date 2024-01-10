@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block main_header %}
+<header class="main-header">
+      <nav class="header-nav">
+          <a href="{% url 'main' %}" class="main-logo"><img src="{% static 'logo.svg' %}" alt="logo" width="50" height="50"></a>
+          <p><a href="{% url 'main' %}"><b style="color: blue">Рус</b><b style="color: red">Вопрос</b></a></p>
+          <ul class="nav-list">
+              <li><a>Профиль</a></li>
+          </ul>
+      </nav>
+</header>
+{% endblock main_header %}
+
+
 {% block user_questions %}
 {% for quiz in user_quizes %}
 <li class="existing-item" id="{{quiz.pk}}">
@@ -7,16 +21,13 @@
     <p class="question-count">{{quiz.number_of_questions}} Вопросов</p>
     <div class="list-config">
         <h2 class="quiz-name">{{quiz.name}}</h2>
-<!--        <img src="{% static 'dots.svg' %}" class="img-button extra" onclick="event.stopPropagation()" alt="Возможности">-->
         <div class="dropdown">
             <img src="{% static 'dots.svg' %}" class="dropbtn" alt="Возможности" width="20" onclick="event.stopPropagation()">
             <div class="dropdown-content">
-                <a onclick="event.stopPropagation()"><div class="drop-link stat-button"><img src="{% static 'statistic.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Статистика</p></div></a>
-<!--                <a href="#" onclick="event.stopPropagation()"><div class="drop-link"><img src="{% static 'share.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Поделиться</p></div></a>-->
-                <a  onclick="event.stopPropagation()"><div class="drop-link del-button"><img src="{% static 'trash.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Удалить</p></div></a>
+                <a href="{% url 'statistic' quiz.pk %}"><div class="drop-link stat-button"><img src="{% static 'statistic.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Статистика</p></div></a>
+                <a onclick="window.myDialog.showModal()"><div class="drop-link del-button"><img src="{% static 'trash.svg' %}" width="20" class="drop-link-img"><p class="drop-link-text">Удалить</p></div></a>
             </div>
         </div>
-
     </div>
 </li>
 {% endfor %}
@@ -24,9 +35,11 @@
 {% block all_questions %}
 {% for quiz in all_quizes %}
 <li class="existing-item" id="{{quiz.pk}}">
-    <img src="{% static 'test.jpg' %}" alt="#" class="item-pic">
-    <p class="question-count">{{quiz.number_of_questions}} Вопросов</p>
-    <h2>{{quiz.name}}</h2>
+    <a href="{% url 'preview' quiz.pk %}">
+        <img src="{% static 'test.jpg' %}" alt="#" class="item-pic">
+        <p class="question-count">{{quiz.number_of_questions}} Вопросов</p>
+        <h2>{{quiz.name}}</h2>
+    </a>
 </li>
 {% endfor %}
 {% endblock all_questions %}

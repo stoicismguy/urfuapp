@@ -1,7 +1,7 @@
+{% include 'main_header.html' %}
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <script type="text/javascript" src="{% static 'base.js' %}"></script>
     <script type="text/javascript" src="{% static 'find_quiz.js' %}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>РусВопрос</title>  
+    <title>РусВопрос</title>
 </head>
 <body>
     {% block main_header %}
@@ -22,7 +22,7 @@
             <div class="widget-item">
 <!--                <div class="widget-inner">-->
                     <form method="GET"  action="{% url 'search' %}" class="widget-inner">
-                        <input type="text" class="input-frame" placeholder="Введите код или название" name="q">
+                        <input type="text" class="input-frame" value="{{ search_text }}" placeholder="Введите код или название" name="q">
                         <button class="find-button">Найти</button>
                     </form>
 <!--                </div>-->
@@ -32,33 +32,21 @@
                 <a href="{% url 'create' %}"><p>Создать викторину</p></a>
             </div>
         </div>
-		<div class="existing-quizzes">
-            <h1>Мои викторины</h1>
-            <ul class="existing-list">
-                {% block user_questions %}
-                {% endblock user_questions %}
-            </ul>
-        </div>
         <div class="existing-quizzes">
-            <h1>Существующие викторины</h1>
+            <h1>Результаты поиска</h1>
             <ul class="existing-list">
-                {% block all_questions %}
-                {% endblock all_questions %}
+                {% for quiz in finded %}
+                    <li class="existing-item" id="{{quiz.pk}}">
+                        <a href="{% url 'preview' quiz.pk %}">
+                            <img src="{% static 'test.jpg' %}" alt="#" class="item-pic">
+                            <p class="question-count">{{quiz.number_of_questions}} Вопросов</p>
+                            <h2>{{quiz.name}}</h2>
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </main>
-    {% csrf_token %}
-    <dialog id="myDialog" class="myDialog">
-        {% csrf_token %}
-        <h1 style="font-size: 25px;">Вы хотите удалить викторину:</h1>
-        <h2 class="dialog-title">Тема викторинки</h2>
-        <div class="dialog-buttons">
-            <button class="cancel" type="button" onclick="window.myDialog.close()"><p>Отменить</p></button>
-            <button class="confirm" type="button"><p>Да</p></button>
-        </div>
-    </dialog>
-    <footer class="main-footer">
 
-    </footer>
 </body>
 </html>

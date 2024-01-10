@@ -10,6 +10,11 @@ $.ajax({
         const titleH = document.getElementById("quiz_title");
         const topicH = document.getElementById("quiz_topic");
 
+        document.querySelector(".main-logo").onclick = function () {
+            cur_loc = window.location.href.split("/");
+            window.location.replace(cur_loc.slice(0, 3).join("/"));
+        }
+
         titleH.textContent = response.title;
         topicH.textContent = response.topic;
 
@@ -40,8 +45,7 @@ $.ajax({
                 else {
                     console.log("enought questions")
                     sendData();
-
-                }
+                    }
                 });
             });
         }
