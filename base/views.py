@@ -40,6 +40,13 @@ def search_view(request):
     return render(request, 'search_result.html', context=context_send)
 
 
+def profile_view(request):
+    context = dict()
+    context['user'] = request.user
+    context['user_quizes'] = Quiz.objects.filter(author=request.user)
+    return render(request, 'profile_view.html', context=context)
+
+
 def quiz_preview(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     context = dict()

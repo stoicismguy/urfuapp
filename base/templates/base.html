@@ -22,13 +22,13 @@
             <div class="widget-item">
 <!--                <div class="widget-inner">-->
                     <form method="GET"  action="{% url 'search' %}" class="widget-inner">
-                        <input type="text" class="input-frame" placeholder="Введите код или название" name="q">
+                        <input type="text" class="input-frame" placeholder="Поиск по названию" name="q">
                         <button class="find-button">Найти</button>
                     </form>
 <!--                </div>-->
             </div>
             <div class="widget-item">
-                <img src="{% static 'plus-icon.svg' %}" width="50" alt="find">
+                <img src="{% static 'newquiz.svg' %}" width="50" alt="find">
                 <a href="{% url 'create' %}"><p>Создать викторину</p></a>
             </div>
         </div>
